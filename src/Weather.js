@@ -62,6 +62,9 @@ export default function Weather() {
               </div>
             </div>
           </div>
+          <a href="https://github.com/Kar1Da/Weather-react" alt="repositories">
+            My repositories
+          </a>
         </div>
       </div>
     </div>
