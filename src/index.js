@@ -8,6 +8,6 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <Weather />
+    <Weather defaultCity="Canberra" />
   </StrictMode>
 );

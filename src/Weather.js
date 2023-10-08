@@ -1,72 +1,80 @@
 import "./style.css";
+import React, { useState } from "react";
+import axios from "axios";
 
-export default function Weather() {
-  return (
-    <div className="Weather">
-      <div className="container">
-        <div className="mainWrapper">
-          <div className="wrapper">
-            <form id="searchCity-form">
-              <div className="input-group mb-4 firstGroup">
-                <input
-                  type="text"
-                  className="form-control mainInput"
-                  placeholder="Search city..."
-                  aria-label="Recipient's username"
-                  aria-describedby="button-addon2"
-                  id="city-input"
-                />
-                <button
-                  type="submit"
-                  className="btn btn-primary searchButton ps-4 pe-4"
-                >
-                  Search
-                </button>
-              </div>
-            </form>
-            <div className="card-body innerContent">
-              <div className="row g-0 firstRow">
-                <div className="col-auto city">
-                  <h1 id="city">City</h1>
-                </div>
-                <div className="col-auto temperature">
-                  <h1>
-                    <span id="degrees"></span>
-                    <button type="button" id="celsius">
-                      C
-                    </button>
-                    <span className="stick">|</span>
-                    <button type="button" id="fahrenheit">
-                      F
-                    </button>
-                  </h1>
-                </div>
+import WeatherInfo from "./WeatherInfo";
 
-                <div className="col-auto bonusInfo">
-                  <div className="col">
-                    <span>
-                      Humidity: 50%<span className="humidity"></span>
-                    </span>
-                  </div>
-                  <div className="col">
-                    <span>
-                      Wind: 3km/h<span className="windSpeed"></span>
-                    </span>
-                  </div>
+export default function Weather(props) {
+  const [city, setCity] = useState(props.defaultCity);
+  let [weatherData, setWeatherData] = useState({ ready: false });
+  function handleResponse(response) {
+    setWeatherData({
+      ready: true,
+      temperature: response.data.temperature.current,
+      wind: response.data.wind.speed,
+      city: response.data.city,
+      date: new Date(response.data.time * 1000),
+      humidity: response.data.temperature.humidity,
+      description: response.data.condition.description,
+    });
+
+    console.log(response.data);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "6f75o9ff2b2c1797a73f7cb01efdat74";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  if (weatherData.ready) {
+    return (
+      <div className="Weather">
+        <div className="container">
+          <div className="mainWrapper">
+            <div className="wrapper">
+              <form onSubmit={handleSubmit} id="searchCity-form">
+                <div className="input-group mb-4 firstGroup">
+                  <input
+                    type="text"
+                    className="form-control mainInput"
+                    placeholder="Search city..."
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2"
+                    id="city-input"
+                    onChange={handleCityChange}
+                  />
+                  <button
+                    type="submit"
+                    className="btn btn-primary searchButton ps-4 pe-4"
+                  >
+                    Search
+                  </button>
                 </div>
-                <div className="col-md-auto ms-md-auto todaysInfo">
-                  <div className="col today">Today</div>
-                  <div className="col time">time</div>
-                  <div className="col-auto weather">weather</div>
-                </div>
-              </div>
+              </form>
+              <WeatherInfo data={weatherData} />
             </div>
+            <a
+              href="https://github.com/Kar1Da/Weather-react"
+              alt="repositories"
+            >
+              My repositories
+            </a>
           </div>
-          <a href="https://github.com/Kar1Da/Weather-react" alt="repositories">
-            My repositories
-          </a>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    search();
+    return "Loading...";
+  }
 }
