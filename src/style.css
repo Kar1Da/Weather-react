@@ -300,3 +300,9 @@
 .apiLink:visited {
   color: rgb(11, 21, 74);
 }
+
+.Oval {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}

@@ -1,6 +1,7 @@
 import "./style.css";
 import React, { useState } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
 import WeatherInfo from "./WeatherInfo";
 
@@ -75,6 +76,6 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return "Loading...";
+    return <Loading />;
   }
 }
