@@ -75,20 +75,6 @@
   top: 5px;
 }
 
-#fahrenheit {
-  padding: 0px;
-  margin: 0px;
-  border: none;
-  background-color: rgb(172, 206, 218);
-  color: rgb(9, 50, 65);
-  font-weight: bolder;
-}
-
-#fahrenheit:hover {
-  color: rgb(117, 17, 12);
-  cursor: pointer;
-}
-
 #celsius {
   padding: 0px;
   margin: 0px;
@@ -96,13 +82,7 @@
   background-color: rgb(172, 206, 218);
   color: rgb(9, 50, 65);
   font-weight: bolder;
-}
-
-/*rgb(247, 253, 255)*/
-
-#celsius:hover {
-  color: rgb(28, 45, 129);
-  cursor: pointer;
+  font-size: 38px;
 }
 
 .bonusInfo {

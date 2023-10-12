@@ -23,6 +23,7 @@ export default function FormattedDate(props) {
   if (props.thisDay) {
     return <div>{day}</div>;
   } else {
+    console.log(props);
     return (
       <div>
         {hours}:{minutes}
