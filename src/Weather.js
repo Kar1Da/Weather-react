@@ -10,16 +10,24 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
   let [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
-    setWeatherData({
-      ready: true,
-      coordinates: response.data.coordinates,
-      temperature: response.data.temperature.current,
-      wind: response.data.wind.speed,
-      city: response.data.city,
-      date: new Date(response.data.time * 1000),
-      humidity: response.data.temperature.humidity,
-      description: response.data.condition.description,
-    });
+    if (response.data.temperature !== undefined) {
+      setWeatherData({
+        ready: true,
+        coordinates: response.data.coordinates,
+        temperature: response.data.temperature.current,
+        wind: response.data.wind.speed,
+        city: response.data.city,
+        date: new Date(response.data.time * 1000),
+        humidity: response.data.temperature.humidity,
+        description: response.data.condition.description,
+      });
+    } else {
+      alert(`If you have this issue, you're probably :
+    1. Misspelled the city name;
+    2. Wrote a non-exicting place;
+    3. Have problems with Wi-Fi connection or server;
+    If you have any questions please contact this email : weather.4cast@gmail.com`);
+    }
 
     console.log(response.data);
   }
@@ -67,12 +75,24 @@ export default function Weather(props) {
               <WeatherInfo data={weatherData} />
               <WeatherForecast coords={weatherData.coordinates} />
             </div>
-            <a
-              href="https://github.com/Kar1Da/Weather-react"
-              alt="repositories"
-            >
-              My repositories
-            </a>
+            <div>
+              This project was coded by Karina and is{" "}
+              <a
+                href="https://github.com/Kar1Da/Weather-react"
+                alt="repository"
+                target="_blank"
+              >
+                open-sourced on GitHub
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://cute-quokka-6cecc6.netlify.app/"
+                alt="site"
+                target="_blank"
+              >
+                hosted on Netlify
+              </a>
+            </div>
           </div>
         </div>
       </div>

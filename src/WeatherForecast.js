@@ -8,7 +8,6 @@ export default function WeatherForecast(props) {
   let [forecast, setForecast] = useState(null);
 
   function handleResponse(response) {
-    console.log(response.data);
     setForecast(response.data.daily);
     setLoaded(true);
   }
@@ -29,9 +28,9 @@ export default function WeatherForecast(props) {
     console.log(forecast);
 
     return (
-      <div>
+      <div className="d-flex justify-content-between">
         {forecast.map(function (dailyForecast, index) {
-          if (index < 5) {
+          if (index > 0 && index < 6) {
             return (
               <div key={index}>
                 <WeatherForecastDay data={dailyForecast} />
