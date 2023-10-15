@@ -81,6 +81,7 @@ export default function Weather(props) {
                 href="https://github.com/Kar1Da/Weather-react"
                 alt="repository"
                 target="_blank"
+                rel="noreferrer"
               >
                 open-sourced on GitHub
               </a>{" "}
@@ -89,6 +90,7 @@ export default function Weather(props) {
                 href="https://cute-quokka-6cecc6.netlify.app/"
                 alt="site"
                 target="_blank"
+                rel="noreferrer"
               >
                 hosted on Netlify
               </a>
