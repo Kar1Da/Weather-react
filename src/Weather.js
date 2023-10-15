@@ -75,24 +75,30 @@ export default function Weather(props) {
               <WeatherInfo data={weatherData} />
               <WeatherForecast coords={weatherData.coordinates} />
             </div>
-            <div>
-              This project was coded by Karina and is{" "}
+            <div className="creatorInfo">
               <a
-                href="https://github.com/Kar1Da/Weather-react"
-                alt="repository"
+                href="https://github.com/Kar1Da?tab=repositories"
+                className="repositoryLink"
                 target="_blank"
                 rel="noreferrer"
               >
-                open-sourced on GitHub
+                <span>Coded</span> by Karina
               </a>{" "}
-              and{" "}
               <a
-                href="https://cute-quokka-6cecc6.netlify.app/"
-                alt="site"
+                href="https://www.pexels.com/@freestockpro/"
+                className="videoAuthor"
                 target="_blank"
                 rel="noreferrer"
               >
-                hosted on Netlify
+                Background photo by <span>Oleksanrd P</span>
+              </a>
+              <a
+                href="https://www.shecodes.io/learn/apis/weather"
+                className="apiLink"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Powered by <span>SheCodes Api</span>
               </a>
             </div>
           </div>

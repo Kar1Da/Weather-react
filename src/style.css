@@ -4,6 +4,14 @@
   --bs-btn-font-size: 1.7rem;
 }
 
+body {
+  background: url("./images/O.P.Photo.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .container {
   position: relative;
   overflow: visible;
@@ -125,13 +133,6 @@
   background-color: rgb(113, 154, 187);
   color: azure;
 }
-
-/* video {
-  object-fit: cover;
-  position: absolute;
-  height: 105%;
-  width: 100%;
-} */
 
 .creatorInfo {
   overflow: hidden;
