@@ -73,7 +73,9 @@ export default function Weather(props) {
                 </div>
               </form>
               <WeatherInfo data={weatherData} />
-              <WeatherForecast coords={weatherData.coordinates} />
+              {weatherData.ready && (
+                <WeatherForecast coords={weatherData.coordinates} />
+              )}
             </div>
             <div className="creatorInfo">
               <a
@@ -90,7 +92,7 @@ export default function Weather(props) {
                 target="_blank"
                 rel="noreferrer"
               >
-                Background photo by <span>Oleksanrd P</span>
+                Background photo by <span>Oleksandr P</span>
               </a>
               <a
                 href="https://www.shecodes.io/learn/apis/weather"
